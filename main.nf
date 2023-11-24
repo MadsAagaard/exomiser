@@ -138,6 +138,6 @@ process exo13_1 {
 
 
 workflow {
-    exo13(hpo_input,vcf_input, ped_input)
+   // exo13(hpo_input,vcf_input, ped_input)
     exo13_1(hpo_input,vcf_input, ped_input)
 }
