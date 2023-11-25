@@ -1,6 +1,6 @@
-KG Vejle, Exomiser analysis
+# KG Vejle, Exomiser analysis
 
-# Usage
+## Usage
 The script takes 3 mandatory inputs: 
 
 1. PED file describing the relationship between the samples in the VCF file
