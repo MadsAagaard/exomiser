@@ -12,5 +12,9 @@ See infonet for information regarding how to prepare the HPO and PED files.
 ## Common use case
     nextflow run KGVejle/exomiser -r main --vcf /path/to/vcf/ --hpo /path/to/hpo/ --ped /path/to/ped
 
-By default, all output (txt, vcf, json and html) is stored in the output directory "exomiser_results". in the folder the script is executed.
+By default, all output (txt, vcf, json and html) is stored in the output directory "exomiser_results" in the folder the script is executed.
+
+Run the script with --help to see available optioons and default settings:
+
+    nextflow run KGVejle/exomiser -r main --help
 
