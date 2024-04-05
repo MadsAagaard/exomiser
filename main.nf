@@ -104,7 +104,7 @@ process exo13 {
     '''
 }
 
-process exo13_1 {
+process exo13_1_2309 {
     //errorStrategy 'ignore'
     publishDir "${params.outdir}/exo13_1/", mode: 'copy'
     echo true
@@ -135,6 +135,40 @@ process exo13_1 {
      --spring.config.location=/data/shared/programmer/exomiser-cli-13.1.0/
     '''
 }
+
+process exo14_2402 {
+    //errorStrategy 'ignore'
+    publishDir "${params.outdir}/exo13_1/", mode: 'copy'
+    echo true
+
+    input:
+    tuple file(hpo), val(hpo2), val(hpo3)// from hpo_input2
+    tuple val(vcf_basename), path(vcf)// from vcf_input2
+    tuple file(ped), val(ped2), val(ped3)// from ped_input2
+
+
+    output:
+    //path("${params.rundir}.analysisready.yml")
+    path("*.{html,tsv,vcf}")
+    shell:
+    '''
+    index=`tail -n 1 !{ped}|awk '{print $2}'`
+    father=`tail -n 1 !{ped}|awk '{print $3}'`
+    mother=`tail -n 1 !{ped}|awk '{print $4}'`
+    hpolist=`sed -r 's/^HP:[[:digit:]]*/"&"/g' !{hpo} | awk '{print $1}'| paste -s -d, -`
+    sed "s/VCF_PH/!{vcf}/g; \
+    s/GENOME_PH/!{exo_yml_genome}/g; \
+    s/PROBAND_PH/${index}/g; \
+     s/PED_PH/!{ped}/g; \
+     s/HPO_PH/$hpolist/g; \
+     s/OUTPUT_PH/!{vcf_basename}.!{exo_yml_genome}.exo13_1/g" \
+     !{exo_yml} > !{params.rundir}.analysisready.yml
+    java -jar /data/shared/programmer/exomiser-cli-14.0.0/exomiser-cli-14.0.0.jar --analysis !{params.rundir}.analysisready.yml \
+     --spring.config.location=/data/shared/programmer/exomiser-cli-13.1.0/
+    '''
+}
+
+
 
 
 workflow {
