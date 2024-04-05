@@ -164,7 +164,7 @@ process exo14_2402 {
      s/OUTPUT_PH/!{vcf_basename}.!{exo_yml_genome}.exo13_1/g" \
      !{exo_yml} > !{params.rundir}.analysisready.yml
     java -jar /data/shared/programmer/exomiser-cli-14.0.0/exomiser-cli-14.0.0.jar --analysis !{params.rundir}.analysisready.yml \
-     --spring.config.location=/data/shared/programmer/exomiser-cli-13.1.0/
+     --spring.config.location=/data/shared/programmer/exomiser-cli-14.0.0/
     '''
 }
 
