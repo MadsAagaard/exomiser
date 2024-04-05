@@ -173,5 +173,6 @@ process exo14_2402 {
 
 workflow {
    // exo13(hpo_input,vcf_input, ped_input)
-    exo13_1(hpo_input,vcf_input, ped_input)
+    exo13_1_2309(hpo_input,vcf_input, ped_input)
+    exo14_2402(hpo_input,vcf_input, ped_input)
 }
