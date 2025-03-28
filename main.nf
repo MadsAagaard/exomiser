@@ -105,7 +105,7 @@ process exo13 {
 }
 
 process exo13_1_2309 {
-    //errorStrategy 'ignore'
+    errorStrategy 'ignore'
     publishDir "${params.outdir}/exo13_1/", mode: 'copy'
     echo true
 
@@ -137,7 +137,7 @@ process exo13_1_2309 {
 }
 
 process exo14_2402 {
-    //errorStrategy 'ignore'
+    errorStrategy 'ignore'
     publishDir "${params.outdir}/exo13_1/", mode: 'copy'
     echo true
 
